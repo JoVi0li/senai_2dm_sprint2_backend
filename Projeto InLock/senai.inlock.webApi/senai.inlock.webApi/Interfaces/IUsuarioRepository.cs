@@ -15,5 +15,7 @@ namespace senai.inlock.webApi.Interfaces
         void AtualizarUrl(int id, UsuarioDomain UsuarioAtt);
 
         void Deletar(int id);
+
+        UsuarioDomain BuscarPorEmailSenha(string email, string senha);
     }
 }
