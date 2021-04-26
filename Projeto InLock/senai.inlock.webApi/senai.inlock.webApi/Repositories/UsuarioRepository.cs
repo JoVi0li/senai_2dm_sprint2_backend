@@ -49,7 +49,7 @@ namespace senai.inlock.webApi.Repositories
                     command.Parameters.AddWithValue("@NomeUsuario", NovoUsuario.NomeUsuario);
                     command.Parameters.AddWithValue("@EmailUsuario", NovoUsuario.Email);
                     command.Parameters.AddWithValue("@SenhaUsuario", NovoUsuario.Senha);
-                    command.Parameters.AddWithValue("@IdTipoUsuario", NovoUsuario.TipoUsuario = new TipoUsuarioDomain());
+                    command.Parameters.AddWithValue("@IdTipoUsuario", NovoUsuario.IdTipoUsuario);
 
                     con.Open();
 
@@ -106,10 +106,7 @@ namespace senai.inlock.webApi.Repositories
                             IdUsuario = Convert.ToInt32(reader[0]),
                             NomeUsuario = Convert.ToString(reader[1]),
                             Email = Convert.ToString(reader[2]),
-                            TipoUsuario = new TipoUsuarioDomain
-                            {
-                                IdTipoUsuario = Convert.ToInt32(reader[3])
-                            }
+                            IdTipoUsuario = Convert.ToInt32(reader[3])
                         };
                         listaDeUsuario.Add(usuario);
                     }
@@ -150,10 +147,7 @@ namespace senai.inlock.webApi.Repositories
                             IdUsuario = Convert.ToInt32(rdr[0]),
                             Email = Convert.ToString(rdr[1]),
                             Senha = Convert.ToString(rdr[2]),
-                            TipoUsuario = new TipoUsuarioDomain
-                            {
-                                Titulo = Convert.ToString(rdr[3])
-                            }
+                            IdTipoUsuario = Convert.ToInt32(rdr[3])
                         };
                         // Retorna o usuário buscado
                         return usuarioBuscado;

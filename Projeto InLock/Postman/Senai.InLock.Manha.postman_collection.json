@@ -1,29 +1,20 @@
 {
 	"info": {
-		"_postman_id": "72326bb0-b4ec-4a0e-a595-e2554a7f8c5f",
+		"_postman_id": "b886331a-c516-443f-af72-0e9a927319d6",
 		"name": "Senai.InLock.Manha",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Usuario",
+			"name": "Estudio",
 			"item": [
 				{
-					"name": "Usuario.Post",
+					"name": "Estudio.Get",
 					"request": {
-						"method": "POST",
+						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"NomeUsuario\" : \"João Vitor\",\r\n    \"Email\" : \"Jovi.oli04@gmail.com\",\r\n    \"Senha\" : \"jovi04\",\r\n    \"IdTipoUsuario\" : \"1\",\r\n    \"Titulo\" : \"Administrador\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
-							"raw": "http://localhost:5000/api/Usuario",
+							"raw": "http://localhost:5000/api/estudio",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -31,15 +22,137 @@
 							"port": "5000",
 							"path": [
 								"api",
-								"Usuario"
+								"estudio"
 							]
 						}
 					},
 					"response": []
 				},
 				{
+					"name": "Estudio.Post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/estudio",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"estudio"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Estudio.Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/estudio/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"estudio",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Jogo",
+			"item": [
+				{
+					"name": "Jogo.Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/jogo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"jogo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Jogo.Post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/jogo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"jogo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Jogo.Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/jogo/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"jogo",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Usuario",
+			"item": [
+				{
 					"name": "Usuario.Get",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsImp0aSI6IjAiLCJleHAiOjE2MTk0NzIzNTEsImlzcyI6IkluTG9jay53ZWJBcGkiLCJhdWQiOiJJbkxvY2sud2ViQXBpIn0.yBozK_kheRVrAqOpyjczdl2wJDPfvcpFxLTrv_8HloA",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -58,12 +171,21 @@
 					"response": []
 				},
 				{
-					"name": "Usuario.Delete",
+					"name": "Usuario.Post(Login)",
 					"request": {
-						"method": "DELETE",
+						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Email\" : \"admin@admin.com\",\r\n    \"Senha\" : \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://localhost:5000/api/Usuario/1",
+							"raw": "http://localhost:5000/api/Usuario/Login",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -72,7 +194,57 @@
 							"path": [
 								"api",
 								"Usuario",
-								"1"
+								"Login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Usuario.Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/Usuario/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Usuario",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Usuario.Post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"NomeUsuario\" : \"João Vitor\",\r\n    \"Email\" : \"jovi.oli04@gmail.com\",\r\n    \"Senha\" : \"1234\",\r\n    \"IdTipoUsuario\" : \"1\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Usuario",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Usuario"
 							]
 						}
 					},
@@ -104,7 +276,7 @@
 					"response": []
 				},
 				{
-					"name": "TipoUsuario.Post",
+					"name": "TipoUsuario.Get",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -138,7 +310,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:5000/api/TipoUsuario/3",
+							"raw": "http://localhost:5000/api/TipoUsuario/4",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -147,7 +319,7 @@
 							"path": [
 								"api",
 								"TipoUsuario",
-								"3"
+								"4"
 							]
 						}
 					},

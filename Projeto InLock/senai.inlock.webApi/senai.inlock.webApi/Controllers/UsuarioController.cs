@@ -33,7 +33,7 @@ namespace senai.inlock.webApi.Controllers
         /// <returns>StatusCode 200 e Lista de usuarios</returns>
         [Authorize]
         [HttpGet]
-        public ActionResult Get()
+        public IActionResult Get()
         {
             List<UsuarioDomain> ListaDeUsuario = _usuarioRepository.ListarUsuarios();
 
