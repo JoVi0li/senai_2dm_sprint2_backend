@@ -26,38 +26,78 @@ namespace Hroads.Controllers
         [HttpPost]
         public IActionResult Post(TipoUsuario TipoUsuarioNovo)
         {
-            _ITipoUsuarioRepository.Create(TipoUsuarioNovo);
+            try
+            {
+                _ITipoUsuarioRepository.Create(TipoUsuarioNovo);
 
-            return StatusCode(201);
+                return StatusCode(201);
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex);
+            }
         }
 
 
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(_ITipoUsuarioRepository.Read());
+            try
+            {
+                return Ok(_ITipoUsuarioRepository.Read());
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex);
+            }
         }
 
         [HttpGet("{Id}")]
         public IActionResult GetById(int Id)
         {
-            return Ok(_ITipoUsuarioRepository.ReadById(Id));
+            try
+            {
+                return Ok(_ITipoUsuarioRepository.ReadById(Id));
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex);
+            }
         }
 
         [HttpPut("{Id}")]
         public IActionResult Put(TipoUsuario TipoUsuarioAtualizado,int Id)
         {
-            _ITipoUsuarioRepository.Update(TipoUsuarioAtualizado, Id);
+            try
+            {
+                _ITipoUsuarioRepository.Update(TipoUsuarioAtualizado, Id);
 
-            return StatusCode(204);
+                return StatusCode(204);
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex);
+            }
         }
 
         [HttpDelete("{Id}")]
         public IActionResult Delete(int Id)
         {
-            _ITipoUsuarioRepository.Delete(Id);
+            try
+            {
+                _ITipoUsuarioRepository.Delete(Id);
 
-            return StatusCode(204);
+                return StatusCode(204);
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex);
+            }
         }
 
     }

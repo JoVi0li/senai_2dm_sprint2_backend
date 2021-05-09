@@ -9,14 +9,14 @@ namespace Hroads.Interfaces
     interface ITipoUsuarioRepository
     {
 
-        public void Create(TipoUsuario NovoTipoUsuario);
+        void Create(TipoUsuario NovoTipoUsuario);
 
-        public List<TipoUsuario> Read();
+        List<TipoUsuario> Read();
 
-        public TipoUsuario ReadById(int Id);
+        TipoUsuario ReadById(int Id);
 
-        public void Update(TipoUsuario TipoUsuarioAtualizado, int Id);
+        void Update(TipoUsuario TipoUsuarioAtualizado, int Id);
 
-        public void Delete(int Id);
+        void Delete(int Id);
     }
 }

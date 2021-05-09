@@ -9,14 +9,14 @@ namespace Hroads.Interfaces
     interface IClassRepository
     {
 
-        public void Create(Class NovoClass);
+        void Create(Class NovoClass);
 
-        public List<Class> Read();
+        List<Class> Read();
 
-        public Class ReadById(int Id);
+        Class ReadById(int Id);
 
-        public void Update(Class ClassAtualizado, int Id);
+        void Update(Class ClassAtualizado, int Id);
 
-        public void Delete(int Id);
+        void Delete(int Id);
     }
 }

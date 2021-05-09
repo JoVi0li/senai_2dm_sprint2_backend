@@ -26,38 +26,78 @@ namespace Hroads.Controllers
         [HttpPost]
         public IActionResult Post(Class ClassNovo)
         {
-            _IClassRepository.Create(ClassNovo);
+            try
+            {
+                _IClassRepository.Create(ClassNovo);
 
-            return StatusCode(201);
+                return StatusCode(201);
+
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex);
+            }
         }
 
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(_IClassRepository.Read());
+            try
+            {
+                return Ok(_IClassRepository.Read());
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex);
+            }
         }
 
 
         [HttpGet("{Id}")]
         public IActionResult GetById(int Id)
         {
-            return Ok(_IClassRepository.ReadById(Id));
+            try
+            {
+                return Ok(_IClassRepository.ReadById(Id));
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex);
+            }
         }
 
         [HttpPut("{Id}")]
         public IActionResult Put(Class ClassAtualizado, int Id)
         {
-            _IClassRepository.Update(ClassAtualizado, Id);
+            try
+            {
+                _IClassRepository.Update(ClassAtualizado, Id);
 
-            return StatusCode(204);
+                return StatusCode(204);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
         }
 
         [HttpDelete("{Id}")]
         public IActionResult Delete(int Id)
         {
-            _IClassRepository.Delete(Id);
+            try
+            {
+                _IClassRepository.Delete(Id);
 
-            return StatusCode(204);
+                return StatusCode(204);
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex);
+            }
         }
     }
 }

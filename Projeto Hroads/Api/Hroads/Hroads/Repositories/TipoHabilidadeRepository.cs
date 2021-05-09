@@ -23,9 +23,7 @@ namespace Hroads.Repositories
 
         public void Delete(int Id)
         {
-            TipoHabilidade TipoHabilidadeBuscado = ctx.TipoHabilidades.Find(Id);
-
-            ctx.TipoHabilidades.Remove(TipoHabilidadeBuscado);
+            ctx.TipoHabilidades.Remove(ReadById(Id));
 
             ctx.SaveChanges();
         }
@@ -42,7 +40,7 @@ namespace Hroads.Repositories
 
         public void Update(TipoHabilidade TipoHabilidadeAtualizado, int Id)
         {
-            TipoHabilidade TipoHabilidadeBuscado = ctx.TipoHabilidades.Find(Id);
+            TipoHabilidade TipoHabilidadeBuscado = ReadById(Id);
 
             if(TipoHabilidadeAtualizado.NomeTipoHabilidade != null)
             {

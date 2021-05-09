@@ -26,41 +26,81 @@ namespace Hroads.Controllers
         [HttpPost]
         public IActionResult Post(HabilidadeClass HabilidadeClassNovo)
         {
-            _HabilidadeClassRepository.Create(HabilidadeClassNovo);
+            try
+            {
+                _HabilidadeClassRepository.Create(HabilidadeClassNovo);
 
-            return StatusCode(201);
+                return StatusCode(201);
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex);
+            }
         }
 
 
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(_HabilidadeClassRepository.Read());
+            try
+            {
+                return Ok(_HabilidadeClassRepository.Read());
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex);
+            }
         }
 
 
         [HttpGet("{Id}")]
         public IActionResult GetById(int Id)
         {
-            return Ok(_HabilidadeClassRepository.ReadById(Id));
+            try
+            {
+                return Ok(_HabilidadeClassRepository.ReadById(Id));
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex);
+            }
         }
 
 
         [HttpPut("{Id}")]
         public IActionResult Put(HabilidadeClass HabilidadeClassAtualizado,int Id)
         {
-            _HabilidadeClassRepository.Update(HabilidadeClassAtualizado, Id);
+            try
+            {
+                _HabilidadeClassRepository.Update(HabilidadeClassAtualizado, Id);
 
-            return StatusCode(204);
+                return StatusCode(204);
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex);
+            }
         }
 
 
         [HttpDelete("{Id}")]
         public IActionResult Delete(int Id)
         {
-            _HabilidadeClassRepository.Delete(Id);
+            try
+            {
+                _HabilidadeClassRepository.Delete(Id);
 
-            return StatusCode(204);
+                return StatusCode(204);
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex);
+            }
         }
     }
 }

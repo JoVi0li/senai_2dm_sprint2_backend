@@ -19,47 +19,95 @@ namespace Hroads.Controllers
 
         public HabilidadeController()
         {
-            _HabilidadeRepository = new HabilidadeRepository();
+            try
+            {
+                _HabilidadeRepository = new HabilidadeRepository();
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex);
+            }
         }
 
 
         [HttpPost]
         public IActionResult Post(Habilidade HabilidadeNovo)
         {
-            _HabilidadeRepository.Create(HabilidadeNovo);
+            try
+            {
+                _HabilidadeRepository.Create(HabilidadeNovo);
 
-            return StatusCode(201);
+                return StatusCode(201);
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex);
+            }
         }
 
 
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(_HabilidadeRepository.Read());
+            try
+            {
+                return Ok(_HabilidadeRepository.Read());
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex);
+            }
         }
 
 
         [HttpGet("{Id}")]
         public IActionResult GetById(int Id)
         {
-            return Ok(_HabilidadeRepository.ReadById(Id));
+            try
+            {
+                return Ok(_HabilidadeRepository.ReadById(Id));
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex);
+            }
         }
 
 
         [HttpPut("{Id}")]
         public IActionResult Put(Habilidade HabilidadeNovo, int Id)
         {
-            _HabilidadeRepository.Update(HabilidadeNovo, Id);
+            try
+            {
+                _HabilidadeRepository.Update(HabilidadeNovo, Id);
 
-            return StatusCode(204);
+                return StatusCode(204);
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex);
+            }
         }
 
         [HttpDelete("{Id}")]
         public IActionResult Delete(int Id)
         {
-            _HabilidadeRepository.Delete(Id);
+            try
+            {
+                _HabilidadeRepository.Delete(Id);
 
-            return StatusCode(204);
+                return StatusCode(204);
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex);
+            }
         }
     }
 }

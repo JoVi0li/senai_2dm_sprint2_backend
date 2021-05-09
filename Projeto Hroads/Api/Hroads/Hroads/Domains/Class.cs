@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 #nullable disable
 
@@ -14,6 +15,8 @@ namespace Hroads.Domains
         }
 
         public int IdClasse { get; set; }
+
+        [Required(ErrorMessage = "O nome da classe é obrigatório!")]
         public string NomeClasse { get; set; }
 
         public virtual ICollection<HabilidadeClass> HabilidadeClasses { get; set; }

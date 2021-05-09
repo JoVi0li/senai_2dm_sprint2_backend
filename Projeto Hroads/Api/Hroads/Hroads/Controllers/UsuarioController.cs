@@ -26,37 +26,77 @@ namespace Hroads.Controllers
         [HttpPost]
         public IActionResult Post(Usuario UsuarioNovo)
         {
-            _IUsuarioRepository.Create(UsuarioNovo);
+            try
+            {
+                _IUsuarioRepository.Create(UsuarioNovo);
 
-            return StatusCode(201);
+                return StatusCode(201);
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex);
+            }
         }
 
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(_IUsuarioRepository.Read());
+            try
+            {
+                return Ok(_IUsuarioRepository.Read());
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex);
+            }
         }
 
         [HttpGet("{Id}")]
         public IActionResult GetById(int Id)
         {
-            return Ok(_IUsuarioRepository.ReadById(Id));
+            try
+            {
+                return Ok(_IUsuarioRepository.ReadById(Id));
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex);
+            }
         }
 
         [HttpPut("{Id}")]
         public IActionResult Put(Usuario UsuarioAtualizado, int Id)
         {
-            _IUsuarioRepository.Update(UsuarioAtualizado, Id);
+            try
+            {
+                _IUsuarioRepository.Update(UsuarioAtualizado, Id);
 
-            return StatusCode(204);
+                return StatusCode(204);
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex);
+            }
         }
 
         [HttpDelete("{Id}")]
         public IActionResult Delete(int Id)
         {
-            _IUsuarioRepository.Delete(Id);
+            try
+            {
+                _IUsuarioRepository.Delete(Id);
 
-            return StatusCode(204);
+                return StatusCode(204);
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex);
+            }
         }
     }
 }

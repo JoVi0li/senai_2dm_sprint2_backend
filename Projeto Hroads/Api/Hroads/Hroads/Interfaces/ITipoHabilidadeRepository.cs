@@ -8,14 +8,14 @@ namespace Hroads.Interfaces
 {
     interface ITipoHabilidadeRepository
     {
-        public void Create(TipoHabilidade NovoTipoHabilidade);
+        void Create(TipoHabilidade NovoTipoHabilidade);
 
-        public List<TipoHabilidade> Read();
+        List<TipoHabilidade> Read();
 
-        public TipoHabilidade ReadById(int Id);
+        TipoHabilidade ReadById(int Id);
 
-        public void Update(TipoHabilidade TipoHabilidadeAtualizado, int Id);
+        void Update(TipoHabilidade TipoHabilidadeAtualizado, int Id);
 
-        public void Delete(int Id);
+        void Delete(int Id);
     }
 }

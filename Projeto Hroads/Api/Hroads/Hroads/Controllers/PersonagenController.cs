@@ -26,37 +26,77 @@ namespace Hroads.Controllers
         [HttpPost]
         public IActionResult Post(Personagen PersonagenNovo)
         {
-            _IPersonagenRepository.Create(PersonagenNovo);
+            try
+            {
+                _IPersonagenRepository.Create(PersonagenNovo);
 
-            return StatusCode(201);
+                return StatusCode(201);
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex);
+            }
         }
 
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(_IPersonagenRepository.Read());
+            try
+            {
+                return Ok(_IPersonagenRepository.Read());
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex);
+            }
         }
 
         [HttpGet("{Id}")]
         public IActionResult GetById(int Id)
         {
-            return Ok(_IPersonagenRepository.ReadById(Id));
+            try
+            {
+                return Ok(_IPersonagenRepository.ReadById(Id));
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex);
+            }
         }
 
         [HttpPut("{Id}")]
         public IActionResult Put(Personagen PersonagenNovo, int Id)
         {
-            _IPersonagenRepository.Update(PersonagenNovo, Id);
+            try
+            {
+                _IPersonagenRepository.Update(PersonagenNovo, Id);
 
-            return StatusCode(204);
+                return StatusCode(204);
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex);
+            }
         }
 
         [HttpDelete("{Id}")]
         public IActionResult Delete(int Id)
         {
-            _IPersonagenRepository.Delete(Id);
+            try
+            {
+                _IPersonagenRepository.Delete(Id);
 
-            return StatusCode(204);
+                return StatusCode(204);
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex);
+            }
         }
     }
 }

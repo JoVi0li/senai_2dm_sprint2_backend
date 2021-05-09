@@ -23,9 +23,7 @@ namespace Hroads.Repositories
 
         public void Delete(int Id)
         {
-            Personagen PersonagenBuscado = ctx.Personagens.Find(Id);
-
-            ctx.Personagens.Remove(PersonagenBuscado);
+            ctx.Personagens.Remove(ReadById(Id));
 
             ctx.SaveChanges();
         }
@@ -45,7 +43,7 @@ namespace Hroads.Repositories
 
         public void Update(Personagen PersonagenAtualizado, int Id)
         {
-            Personagen PersonagenBuscado = ctx.Personagens.Find(Id);
+            Personagen PersonagenBuscado = ReadById(Id);
 
             if(PersonagenAtualizado.NomePersonagem != null)
             {

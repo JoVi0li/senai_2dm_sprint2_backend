@@ -24,9 +24,7 @@ namespace Hroads.Repositories
 
         public void Delete(int Id)
         {
-            TipoUsuario TipoUsuarioBuscado = ctx.TipoUsuarios.Find(Id);
-
-            ctx.TipoUsuarios.Remove(TipoUsuarioBuscado);
+            ctx.TipoUsuarios.Remove(ReadById(Id));
 
             ctx.SaveChanges();
         }
@@ -43,7 +41,7 @@ namespace Hroads.Repositories
 
         public void Update(TipoUsuario TipoUsuarioAtualizado, int Id)
         {
-            TipoUsuario TipoUsuarioBuscado = ctx.TipoUsuarios.Find(Id);
+            TipoUsuario TipoUsuarioBuscado = ReadById(Id);
 
             if(TipoUsuarioAtualizado.Titulo != null)
             {

@@ -9,14 +9,14 @@ namespace Hroads.Interfaces
     interface IPersonagenRepository
     {
 
-        public void Create(Personagen NovoPersonagen);
+        void Create(Personagen NovoPersonagen);
 
-        public List<Personagen> Read();
+        List<Personagen> Read();
 
-        public Personagen ReadById(int Id);
+        Personagen ReadById(int Id);
 
-        public void Update(Personagen PersonagenAtualizado, int Id);
+        void Update(Personagen PersonagenAtualizado, int Id);
 
-        public void Delete(int Id);
+        void Delete(int Id);
     }
 }

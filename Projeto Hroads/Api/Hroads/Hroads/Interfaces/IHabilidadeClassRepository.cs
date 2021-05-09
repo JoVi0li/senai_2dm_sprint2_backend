@@ -8,14 +8,14 @@ namespace Hroads.Interfaces
 {
     interface IHabilidadeClassRepository
     {
-        public void Create(HabilidadeClass NovoHabilidadeClass);
+        void Create(HabilidadeClass NovoHabilidadeClass);
 
-        public List<HabilidadeClass> Read();
+        List<HabilidadeClass> Read();
 
-        public HabilidadeClass ReadById(int Id);
+        HabilidadeClass ReadById(int Id);
 
-        public void Update(HabilidadeClass HabilidadeClassAtualizado, int Id);
+        void Update(HabilidadeClass HabilidadeClassAtualizado, int Id);
 
-        public void Delete(int Id);
+        void Delete(int Id);
     }
 }

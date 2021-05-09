@@ -24,9 +24,8 @@ namespace Hroads.Repositories
 
         public void Delete(int Id)
         {
-            Class ClassBuscada = ctx.Classes.Find(Id);
 
-            ctx.Classes.Remove(ClassBuscada);
+            ctx.Classes.Remove(ReadById(Id));
 
             ctx.SaveChanges();
         }
@@ -46,7 +45,7 @@ namespace Hroads.Repositories
 
         public void Update(Class ClassAtualizado, int Id)
         {
-            Class ClassBuscada = ctx.Classes.Find(Id);
+            Class ClassBuscada = ReadById(Id);
 
             if(ClassAtualizado.NomeClasse != null)
             {

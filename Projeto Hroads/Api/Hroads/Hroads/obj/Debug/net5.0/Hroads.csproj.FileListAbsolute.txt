@@ -59,3 +59,7 @@ C:\Users\JoViO\OneDrive\Documentos\GitHub\senai_2dm_sprint2_backend\Projeto Hroa
 C:\Users\JoViO\OneDrive\Documentos\GitHub\senai_2dm_sprint2_backend\Projeto Hroads\Api\Hroads\Hroads\obj\Debug\net5.0\ref\Hroads.dll
 C:\Users\JoViO\OneDrive\Documentos\GitHub\senai_2dm_sprint2_backend\Projeto Hroads\Api\Hroads\Hroads\obj\Debug\net5.0\Hroads.pdb
 C:\Users\JoViO\OneDrive\Documentos\GitHub\senai_2dm_sprint2_backend\Projeto Hroads\Api\Hroads\Hroads\obj\Debug\net5.0\Hroads.genruntimeconfig.cache
+C:\Users\JoViO\OneDrive\Documentos\GitHub\senai_2dm_sprint2_backend\Projeto Hroads\Api\Hroads\Hroads\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\JoViO\OneDrive\Documentos\GitHub\senai_2dm_sprint2_backend\Projeto Hroads\Api\Hroads\Hroads\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\JoViO\OneDrive\Documentos\GitHub\senai_2dm_sprint2_backend\Projeto Hroads\Api\Hroads\Hroads\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\JoViO\OneDrive\Documentos\GitHub\senai_2dm_sprint2_backend\Projeto Hroads\Api\Hroads\Hroads\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll

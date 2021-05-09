@@ -22,9 +22,7 @@ namespace Hroads.Repositories
 
         public void Delete(int Id)
         {
-            Usuario UsuarioBuscado = ctx.Usuarios.Find(Id);
-
-            ctx.Usuarios.Remove(UsuarioBuscado);
+            ctx.Usuarios.Remove(ReadById(Id));
 
             ctx.SaveChanges();
         }
@@ -41,7 +39,7 @@ namespace Hroads.Repositories
 
         public void Update(Usuario UsuarioAtualizado, int Id)
         {
-            Usuario UsuarioBuscado = ctx.Usuarios.Find(Id);
+            Usuario UsuarioBuscado = ReadById(Id);
             
             if(UsuarioAtualizado.NomeUsuario != null)
             {
