@@ -8,6 +8,7 @@ namespace Hroads.Interfaces
 {
     interface IUsuarioRepository
     {
+        Usuario Login(string Email, string Senha);
 
         void Create(Usuario NovoUsuario);
 

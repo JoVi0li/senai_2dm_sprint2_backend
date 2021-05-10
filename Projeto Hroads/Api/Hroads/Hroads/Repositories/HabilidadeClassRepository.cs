@@ -1,6 +1,7 @@
 ﻿using Hroads.Contexts;
 using Hroads.Domains;
 using Hroads.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +31,10 @@ namespace Hroads.Repositories
 
         public List<HabilidadeClass> Read()
         {
-            return ctx.HabilidadeClasses.ToList();
+            return ctx.HabilidadeClasses
+                .Include(hc => hc.IdClasseNavigation)
+                .Include(hc => hc.IdHabilidadeNavigation)
+                .ToList();
         }
 
         public HabilidadeClass ReadById(int Id)

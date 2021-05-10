@@ -1,6 +1,7 @@
 ﻿using Hroads.Contexts;
 using Hroads.Domains;
 using Hroads.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,7 +34,10 @@ namespace Hroads.Repositories
 
         public List<Class> Read()
         {
-            return ctx.Classes.ToList();
+            return ctx.Classes
+                .Include(c => c.Personagens)
+                .Include(c => c.HabilidadeClasses)
+                .ToList();
         }
 
 

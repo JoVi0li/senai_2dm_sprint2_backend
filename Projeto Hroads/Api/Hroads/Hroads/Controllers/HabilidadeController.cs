@@ -19,15 +19,7 @@ namespace Hroads.Controllers
 
         public HabilidadeController()
         {
-            try
-            {
-                _HabilidadeRepository = new HabilidadeRepository();
-            }
-            catch (Exception ex)
-            {
-
-                return BadRequest(ex);
-            }
+            _HabilidadeRepository = new HabilidadeRepository();
         }
 
 

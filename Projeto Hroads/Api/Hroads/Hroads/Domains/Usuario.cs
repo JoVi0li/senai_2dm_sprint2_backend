@@ -20,6 +20,7 @@ namespace Hroads.Domains
         public string SenhaUsuario { get; set; }
 
         [Required(ErrorMessage = "O ID do tipo de usuário é obrigatório!")]
+        [StringLength(50, MinimumLength = 8, ErrorMessage = "A senha deverá ter de 8 a 50 caracteres")]
         public int? IdTipoUsuario { get; set; }
 
         public virtual TipoUsuario IdTipoUsuarioNavigation { get; set; }
