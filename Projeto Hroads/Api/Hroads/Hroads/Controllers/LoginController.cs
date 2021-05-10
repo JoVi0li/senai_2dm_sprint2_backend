@@ -26,6 +26,12 @@ namespace Hroads.Controllers
             _UsuarioRepository = new UsuarioRepository();
         }
 
+
+        /// <summary>
+        /// Válida o email e senha para efetuar login E Gera um token caso o login seja efetuado
+        /// </summary>
+        /// <param name="login">Objeto do tipo LoginViewModel</param>
+        /// <returns>Status Code 200 - Ok E Token</returns>
         [HttpPost]
         public IActionResult Post(LoginViewModel login)
         {
@@ -47,7 +53,7 @@ namespace Hroads.Controllers
                     new Claim(ClaimTypes.Role, UsuarioBuscado.IdTipoUsuario.ToString())
                 };
 
-                var Key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("Hroads-key"));
+                var Key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("Hroads-Chave-Autenticacao"));
 
                 var Creds = new SigningCredentials(Key, SecurityAlgorithms.HmacSha256);
 
@@ -70,9 +76,9 @@ namespace Hroads.Controllers
             catch (Exception ex)
             {
 
-                BadRequest(ex);
+                 return BadRequest(ex);
             };
-            return Ok();
+         
         }
     }
 }

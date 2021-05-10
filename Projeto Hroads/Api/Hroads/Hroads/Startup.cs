@@ -37,14 +37,15 @@ namespace Hroads
                     options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
                     options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
                 });
-                services.AddSwaggerGen(c =>
+            services.AddSwaggerGen(c =>
                 {
-                    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Hroads", Version = "v1" });
+                    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Hroads.WebApi", Version = "v1" });
 
                     var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                     c.IncludeXmlComments(xmlPath);
                 });
+
             services
                 .AddAuthentication(options =>
                 {
@@ -62,7 +63,7 @@ namespace Hroads
 
                         ValidateLifetime = true,
 
-                        IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("Hroads-Key")),
+                        IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("Hroads-Chave-Autenticacao")),
 
                         ClockSkew = TimeSpan.FromHours(2),
 
@@ -85,16 +86,15 @@ namespace Hroads
 
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Hroads v1");
-                c.RoutePrefix = string.Empty;
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Hroads.WebApi");
             });
    
 
             app.UseRouting();
 
-            app.UseAuthorization();
-
             app.UseAuthentication();
+
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

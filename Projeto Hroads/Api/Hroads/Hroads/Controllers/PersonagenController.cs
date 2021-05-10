@@ -1,6 +1,7 @@
 ﻿using Hroads.Domains;
 using Hroads.Interfaces;
 using Hroads.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -23,6 +24,12 @@ namespace Hroads.Controllers
         }
 
 
+        /// <summary>
+        /// Cadastra um novo personagem
+        /// </summary>
+        /// <param name="PersonagenNovo">Objeto tipo Personagen</param>
+        /// <returns></returns>
+        [Authorize(Roles = "2")]
         [HttpPost]
         public IActionResult Post(Personagen PersonagenNovo)
         {
@@ -39,6 +46,12 @@ namespace Hroads.Controllers
             }
         }
 
+
+        /// <summary>
+        /// lista todos os personagens
+        /// </summary>
+        /// <returns>Uma lista de personagens E Status Code 200 - Ok</returns>
+        [Authorize(Roles = "1, 2")]
         [HttpGet]
         public IActionResult Get()
         {
@@ -53,6 +66,12 @@ namespace Hroads.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Busca um personagem pelo IE
+        /// </summary>
+        /// <param name="Id">Id do personagem buscado</param>
+        /// <returns>Um personagem E Status Code 200 - Ok</returns>
         [HttpGet("{Id}")]
         public IActionResult GetById(int Id)
         {
@@ -67,6 +86,13 @@ namespace Hroads.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Atualiza um personagem
+        /// </summary>
+        /// <param name="PersonagenNovo">objeot do tipo Personagen contendo as novas informações</param>
+        /// <param name="Id">Id do personagem bsucado</param>
+        /// <returns>Status Code 204 - No Content</returns>
         [HttpPut("{Id}")]
         public IActionResult Put(Personagen PersonagenNovo, int Id)
         {
@@ -83,6 +109,12 @@ namespace Hroads.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Exclui um personagem
+        /// </summary>
+        /// <param name="Id">Id do personagem bsucado</param>
+        /// <returns>Status Code 204 - No Content</returns>
         [HttpDelete("{Id}")]
         public IActionResult Delete(int Id)
         {

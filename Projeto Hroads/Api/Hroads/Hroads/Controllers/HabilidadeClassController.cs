@@ -1,6 +1,7 @@
 ﻿using Hroads.Domains;
 using Hroads.Interfaces;
 using Hroads.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -23,6 +24,12 @@ namespace Hroads.Controllers
         }
 
 
+        /// <summary>
+        /// Cadastra uma nova HabilidadeClass
+        /// </summary>
+        /// <param name="HabilidadeClassNovo">Objeto do tipo HabilidadeClass</param>
+        /// <returns>Status Code 201 - Created</returns>
+        [Authorize(Roles = "1")]
         [HttpPost]
         public IActionResult Post(HabilidadeClass HabilidadeClassNovo)
         {
@@ -40,6 +47,10 @@ namespace Hroads.Controllers
         }
 
 
+        /// <summary>
+        /// Lista todas as classes de habilidades
+        /// </summary>
+        /// <returns>Uma lista de classes de hablidades</returns>
         [HttpGet]
         public IActionResult Get()
         {
@@ -55,6 +66,11 @@ namespace Hroads.Controllers
         }
 
 
+        /// <summary>
+        /// Busca pelo Id
+        /// </summary>
+        /// <param name="Id">Id da classe de habilidade buscada</param>
+        /// <returns>Status Code 200 - Ok</returns>
         [HttpGet("{Id}")]
         public IActionResult GetById(int Id)
         {
@@ -70,6 +86,12 @@ namespace Hroads.Controllers
         }
 
 
+        /// <summary>
+        /// Atualiza uma classe de habilidade
+        /// </summary>
+        /// <param name="HabilidadeClassAtualizado">Objeto do tipo HabilidadeClass contendo as novas informações</param>
+        /// <param name="Id">Id da classe de habilidade buscada</param>
+        /// <returns>Status Code 204 - No Content</returns>
         [HttpPut("{Id}")]
         public IActionResult Put(HabilidadeClass HabilidadeClassAtualizado,int Id)
         {
@@ -86,7 +108,11 @@ namespace Hroads.Controllers
             }
         }
 
-
+        /// <summary>
+        /// Exclui uma classe de habilidade
+        /// </summary>
+        /// <param name="Id">Id da classe de habilidade buscada</param>
+        /// <returns>Status Code 204 - No Content</returns>
         [HttpDelete("{Id}")]
         public IActionResult Delete(int Id)
         {

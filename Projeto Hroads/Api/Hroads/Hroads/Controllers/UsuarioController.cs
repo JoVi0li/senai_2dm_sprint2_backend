@@ -1,6 +1,7 @@
 ﻿using Hroads.Domains;
 using Hroads.Interfaces;
 using Hroads.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -23,6 +24,12 @@ namespace Hroads.Controllers
             _IUsuarioRepository = new UsuarioRepository();
         }
 
+        /// <summary>
+        /// Cadastra um novo usuário
+        /// </summary>
+        /// <param name="UsuarioNovo">Objeto do tipo Usuario</param>
+        /// <returns>Status Code 201 - Created</returns>
+        [Authorize(Roles = "1")]
         [HttpPost]
         public IActionResult Post(Usuario UsuarioNovo)
         {
@@ -39,6 +46,11 @@ namespace Hroads.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Lista os usuários
+        /// </summary>
+        /// <returns>Uma lista de usuários</returns>
         [HttpGet]
         public IActionResult Get()
         {
@@ -53,6 +65,12 @@ namespace Hroads.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Busca um usuário pelo ID
+        /// </summary>
+        /// <param name="Id">Id do usuário buscado</param>
+        /// <returns>Um usuário E Status Code 200 - Ok</returns>
         [HttpGet("{Id}")]
         public IActionResult GetById(int Id)
         {
@@ -67,6 +85,13 @@ namespace Hroads.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Atualiza um usuário
+        /// </summary>
+        /// <param name="UsuarioAtualizado"></param>
+        /// <param name="Id">Id do usuário buscado</param>
+        /// <returns>Status Code 204 - No Content</returns>
         [HttpPut("{Id}")]
         public IActionResult Put(Usuario UsuarioAtualizado, int Id)
         {
@@ -83,6 +108,12 @@ namespace Hroads.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Exclui um usuário
+        /// </summary>
+        /// <param name="Id">Id do usuário buscado</param>
+        /// <returns>Status Code 204 - No Content</returns>
         [HttpDelete("{Id}")]
         public IActionResult Delete(int Id)
         {
