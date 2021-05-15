@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Senai.SpMedicalGroup.WebApi.Domains;
 using Senai.SpMedicalGroup.WebApi.Interfaces;
@@ -28,6 +29,7 @@ namespace Senai.SpMedicalGroup.WebApi.Controllers
         /// </summary>
         /// <param name="NovoProntuario">Objeto do tipo Prontuario</param>
         /// <returns>StatusCode 201 - Created</returns>
+        [Authorize(Roles = "2")]
         [HttpPost]
         public IActionResult Post(Prontuario NovoProntuario)
         {
@@ -48,7 +50,8 @@ namespace Senai.SpMedicalGroup.WebApi.Controllers
         /// <summary>
         /// Lista todos os prontuarios
         /// </summary>
-        /// <returns>Uma lista de prontuarios && StatusCode 200 - Ok</returns>
+        /// <returns>Uma lista de prontuarios E StatusCode 200 - Ok</returns>
+        [Authorize(Roles = "2")]
         [HttpGet]
         public IActionResult Get()
         {
@@ -67,7 +70,8 @@ namespace Senai.SpMedicalGroup.WebApi.Controllers
         /// Busca um prontuario pelo ID
         /// </summary>
         /// <param name="Id">Id do prontuario buscado</param>
-        /// <returns>Um prontuario && StatusCode 200 - Ok</returns>
+        /// <returns>Um prontuario E StatusCode 200 - Ok</returns>
+        [Authorize(Roles = "2")]
         [HttpGet("{Id}")]
         public IActionResult GetbyId(int Id)
         {
@@ -89,6 +93,7 @@ namespace Senai.SpMedicalGroup.WebApi.Controllers
         /// <param name="Id">Id do prontuario buscado</param>
         /// <param name="ProntuarioAtualizado">objeto do tipo Prontuario</param>
         /// <returns>StatusCode 204 - No Content</returns>
+        [Authorize(Roles = "2")]
         [HttpPut("{Id}")]
         public IActionResult Put(int Id, Prontuario ProntuarioAtualizado)
         {
@@ -111,6 +116,7 @@ namespace Senai.SpMedicalGroup.WebApi.Controllers
         /// </summary>
         /// <param name="Id">Id do prontuario buscado</param>
         /// <returns>StatusCode 204 - No Content</returns>
+        [Authorize(Roles = "2")]
         [HttpDelete("{Id}")]
         public IActionResult Delete(int Id)
         {

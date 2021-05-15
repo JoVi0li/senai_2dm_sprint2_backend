@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Senai.SpMedicalGroup.WebApi.Domains;
 using Senai.SpMedicalGroup.WebApi.Interfaces;
@@ -28,6 +29,7 @@ namespace Senai.SpMedicalGroup.WebApi.Controllers
         /// </summary>
         /// <param name="NovoConsultum">Objeto do tipo Consultum</param>
         /// <returns>StatusCode 201 - Created</returns>
+        [Authorize(Roles = "1")]
         [HttpPost]
         public IActionResult Post(Consultum NovoConsultum)
         {
@@ -49,6 +51,7 @@ namespace Senai.SpMedicalGroup.WebApi.Controllers
         /// Lista todas as consultas
         /// </summary>
         /// <returns>Uma lista de consultas</returns>
+        [Authorize(Roles = "1")]
         [HttpGet]
         public IActionResult Get()
         {
@@ -69,6 +72,7 @@ namespace Senai.SpMedicalGroup.WebApi.Controllers
         /// </summary>
         /// <param name="Id">Id da consulta buscada</param>
         /// <returns>Uma consulta</returns>
+        [Authorize(Roles = "1")]
         [HttpGet("{Id}")]
         public IActionResult GetById(int Id)
         {
@@ -90,6 +94,7 @@ namespace Senai.SpMedicalGroup.WebApi.Controllers
         /// <param name="Id">Id da consulta buscada</param>
         /// <param name="ConsultumAtualizado">Objeto do tipo Consultum</param>
         /// <returns>StatusCode 204 - No Content</returns>
+        [Authorize(Roles = "1")]
         [HttpPut("{Id}")]
         public IActionResult Put(int Id, Consultum ConsultumAtualizado)
         {
@@ -111,6 +116,7 @@ namespace Senai.SpMedicalGroup.WebApi.Controllers
         /// </summary>
         /// <param name="Id">Id da consulta buscada</param>
         /// <returns>StatusCode 204 - No Content</returns>
+        [Authorize(Roles = "1")]
         [HttpDelete("{Id}")]
         public IActionResult Delete(int Id)
         {

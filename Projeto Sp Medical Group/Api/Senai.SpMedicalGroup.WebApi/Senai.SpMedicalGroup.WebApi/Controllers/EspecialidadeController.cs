@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Senai.SpMedicalGroup.WebApi.Domains;
 using Senai.SpMedicalGroup.WebApi.Interfaces;
@@ -28,6 +29,7 @@ namespace Senai.SpMedicalGroup.WebApi.Controllers
         /// </summary>
         /// <param name="NovaEspecialidade">Objeto do tipo Especialidade</param>
         /// <returns>StatusCode 201 - Created</returns>
+        [Authorize]
         [HttpPost]
         public IActionResult Post(Especialidade NovaEspecialidade)
         {
@@ -49,7 +51,8 @@ namespace Senai.SpMedicalGroup.WebApi.Controllers
         /// <summary>
         /// Lista todas as especialidades
         /// </summary>
-        /// <returns>Uma lista de especialidades && StatusCode 200 - Ok</returns>
+        /// <returns>Uma lista de especialidades E StatusCode 200 - Ok</returns>
+        [Authorize]
         [HttpGet]
         public IActionResult Get()
         {
@@ -71,7 +74,8 @@ namespace Senai.SpMedicalGroup.WebApi.Controllers
         /// Busca uma especialidade pelo Id
         /// </summary>
         /// <param name="Id">Id da especialidade buscada</param>
-        /// <returns>Uma especialidade && StatusCode 200 - Ok</returns>
+        /// <returns>Uma especialidade E StatusCode 200 - Ok</returns>
+        [Authorize]
         [HttpGet("{Id}")]
         public IActionResult GetById(int Id)
         {
@@ -94,6 +98,7 @@ namespace Senai.SpMedicalGroup.WebApi.Controllers
         /// <param name="Id">Id da especialidade buscada</param>
         /// <param name="EspecialidadeAtualizada">objeto do tipo Especialidade</param>
         /// <returns>StatusCode 204 - No Content</returns>
+        [Authorize]
         [HttpPut("{Id}")]
         public IActionResult Update(int Id, Especialidade EspecialidadeAtualizada)
         {
@@ -116,6 +121,7 @@ namespace Senai.SpMedicalGroup.WebApi.Controllers
         /// </summary>
         /// <param name="Id">Id da especialidade buscada</param>
         /// <returns>StatusCode 204 - No Content</returns>
+        [Authorize]
         [HttpDelete("{Id}")]
         public IActionResult Delete(int Id)
         {

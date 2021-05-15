@@ -29,7 +29,7 @@ namespace Senai.SpMedicalGroup.WebApi.Repositories
 
         public Usuario Login(string Email, string Senha)
         {
-            throw new NotImplementedException();
+            return ctx.Usuarios.FirstOrDefault(c => c.Email == Email && c.Senha == Senha);
         }
 
         public List<Usuario> Read()
