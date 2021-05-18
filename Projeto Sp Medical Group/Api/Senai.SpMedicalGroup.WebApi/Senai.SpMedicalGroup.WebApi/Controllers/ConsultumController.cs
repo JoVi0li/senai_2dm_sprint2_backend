@@ -88,6 +88,37 @@ namespace Senai.SpMedicalGroup.WebApi.Controllers
         }
 
 
+        [Authorize(Roles = "1, 2")]
+        [HttpGet("GetByIdDoctor/{Id}")]
+        public IActionResult GetByIdDoctor(int Id)
+        {
+            try
+            {
+                return Ok(_IConsultumRepository.ReadByIdDoctor(Id));
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex);
+            }
+        }
+
+        [Authorize(Roles = "1, 3")]
+        [HttpGet("GetByIdPatient/{Id}")]
+        public IActionResult GetByIdPatient(int Id)
+        {
+            try
+            {
+                return Ok(_IConsultumRepository.ReadByIdPatient(Id));
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex);
+            }
+        }
+
+
         /// <summary>
         /// Atualiza as informações da consulta
         /// </summary>

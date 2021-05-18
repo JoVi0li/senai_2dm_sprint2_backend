@@ -82,6 +82,10 @@ namespace Senai.SpMedicalGroup.WebApi.Contexts
                     .HasMaxLength(100)
                     .IsUnicode(false);
 
+                entity.Property(e => e.Descricao)
+                    .HasMaxLength(300)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.Situacao)
                     .IsRequired()
                     .HasMaxLength(50)

@@ -14,8 +14,13 @@ namespace Senai.SpMedicalGroup.WebApi.Interfaces
 
         Consultum ReadById(int Id);
 
+        List<Consultum> ReadByIdDoctor(int Id);
+
+        List<Consultum> ReadByIdPatient(int Id);
+
         void Update(int Id, Consultum ConsultumAtualizado);
 
         void Delete(int Id);
+
     }
 }

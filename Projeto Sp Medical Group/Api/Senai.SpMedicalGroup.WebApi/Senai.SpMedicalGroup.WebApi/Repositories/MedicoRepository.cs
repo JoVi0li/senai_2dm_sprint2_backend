@@ -36,11 +36,8 @@ namespace Senai.SpMedicalGroup.WebApi.Repositories
 
         public Medico ReadById(int Id)
         {
-            return (Medico)ctx.Medicos
-                .Include(
-                    m => m.Consulta
-                    .Where(c => c.IdMedico == Id)
-                );
+            return ctx.Medicos.FirstOrDefault(m => m.IdMedico == Id);
+                
         }
 
         public void Update(int Id, Medico MedicoAtualizado)

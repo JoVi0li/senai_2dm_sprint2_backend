@@ -12,6 +12,7 @@ namespace Senai.SpMedicalGroup.WebApi.Domains
         public int? IdMedico { get; set; }
         public string DataConsulta { get; set; }
         public string Situacao { get; set; }
+        public string Descricao { get; set; }
 
         public virtual Medico IdMedicoNavigation { get; set; }
         public virtual Prontuario IdProntuarioNavigation { get; set; }
