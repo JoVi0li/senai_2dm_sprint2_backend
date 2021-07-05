@@ -50,14 +50,29 @@
             <summary>
             Lista todas as consultas
             </summary>
-            <returns>Uma lista de consultas</returns>
+            <returns>Uma lista de consultas</returns>      
         </member>
         <member name="M:Senai.SpMedicalGroup.WebApi.Controllers.ConsultumController.GetById(System.Int32)">
             <summary>
             Busca um consulta pelo Id
             </summary>
             <param name="Id">Id da consulta buscada</param>
-            <returns>Uma consulta</returns>
+            <returns>Uma consulta</returns>     
+        </member>
+        <member name="M:Senai.SpMedicalGroup.WebApi.Controllers.ConsultumController.GetByIdDoctor(System.Int32)">
+            <summary>
+            Busca as consultas atribuidas ao medico
+            </summary>
+            <param name="Id">Id do medico</param>
+            <returns>Uma lista de consultas</returns>
+        </member>
+        <member name="M:Senai.SpMedicalGroup.WebApi.Controllers.ConsultumController.GetByIdPatient(System.Int32)">
+            <summary>
+            Busca as consultas atribuidas ao paciente
+            </summary>
+            <param name="Id">Id do paciente</param>
+            <returns>Uma lista de consultas</returns>
+                [Authorize(Roles = "1, 2, 3")]
         </member>
         <member name="M:Senai.SpMedicalGroup.WebApi.Controllers.ConsultumController.Put(System.Int32,Senai.SpMedicalGroup.WebApi.Domains.Consultum)">
             <summary>
@@ -226,20 +241,20 @@
             Cadastra um novo usuario
             </summary>
             <param name="NovoUsuario">Objeto do tipo Usuario</param>
-            <returns>StatusCode 201 - Created</returns>
+            <returns>StatusCode 201 - Created</returns>       
         </member>
         <member name="M:Senai.SpMedicalGroup.WebApi.Controllers.UsuarioController.Get">
             <summary>
             Lista todos os usuarios
             </summary>
-            <returns>Uma lista de usuarios E StatusCode 200 - Ok</returns>
+            <returns>Uma lista de usuarios E StatusCode 200 - Ok</returns>        
         </member>
         <member name="M:Senai.SpMedicalGroup.WebApi.Controllers.UsuarioController.GetById(System.Int32)">
             <summary>
             Busca um usuario pelo Id
             </summary>
             <param name="Id">Id do usuario buscado</param>
-            <returns>Um usuario E StatusCode 200 - Ok</returns>
+            <returns>Um usuario E StatusCode 200 - Ok</returns>     
         </member>
         <member name="M:Senai.SpMedicalGroup.WebApi.Controllers.UsuarioController.Put(System.Int32,Senai.SpMedicalGroup.WebApi.Domains.Usuario)">
             <summary>

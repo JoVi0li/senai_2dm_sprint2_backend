@@ -13,6 +13,7 @@ namespace Senai.SpMedicalGroup.WebApi.Controllers
 {
     [Produces("application/json")]
     [Route("api/[controller]")]
+    [Authorize(Roles = "1, 2")]
     [ApiController]
     public class MedicoController : ControllerBase
     {
@@ -29,7 +30,6 @@ namespace Senai.SpMedicalGroup.WebApi.Controllers
         /// </summary>
         /// <param name="NovoMedico">Objeto do tipo Medico</param>
         /// <returns>StatusCode 201 - Created</returns>
-        [Authorize(Roles = "1 , 2")]
         [HttpPost]
         public IActionResult Post(Medico NovoMedico)
         {
@@ -51,7 +51,6 @@ namespace Senai.SpMedicalGroup.WebApi.Controllers
         /// Lista todos os medicos
         /// </summary>
         /// <returns>Uma lista de medicos E StatusCode 200 - Ok</returns>
-        [Authorize(Roles = "1 , 2")]
         [HttpGet]
         public IActionResult Red()
         {
@@ -72,7 +71,6 @@ namespace Senai.SpMedicalGroup.WebApi.Controllers
         /// </summary>
         /// <param name="Id">Id do medico buscado</param>
         /// <returns>Um medico E StatusCode 200 - Ok</returns>
-        [Authorize(Roles = "1 , 2")]
         [HttpGet("{Id}")]
         public IActionResult GetById(int Id)
         {
@@ -94,7 +92,6 @@ namespace Senai.SpMedicalGroup.WebApi.Controllers
         /// <param name="Id">Id do medico buscado</param>
         /// <param name="MedicoAtualizado">Objeto do tipo Medico</param>
         /// <returns>StatusCode 204 - No Content</returns>
-        [Authorize(Roles = "1 , 2")]
         [HttpPut("{Id}")]
         public IActionResult Put(int Id, Medico MedicoAtualizado)
         {
@@ -117,7 +114,6 @@ namespace Senai.SpMedicalGroup.WebApi.Controllers
         /// </summary>
         /// <param name="Id">Id do medico buscado</param>
         /// <returns>StatusCode 204 - No Content</returns>
-        [Authorize(Roles = "1 , 2")]
         [HttpDelete("{Id}")]
         public IActionResult Delete(int Id)
         {

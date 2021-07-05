@@ -14,6 +14,7 @@ namespace Senai.SpMedicalGroup.WebApi.Controllers
     [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "1")]
     public class ClinicaController : ControllerBase
     {
         private IClinicaRepository _IClinicaRepository { get; set; }
@@ -28,7 +29,7 @@ namespace Senai.SpMedicalGroup.WebApi.Controllers
         /// </summary>
         /// <param name="NovaClinica">Objeto do tipo Clinica</param>
         /// <returns>Status Code 201 - Created</returns>
-        [Authorize(Roles = "1")]
+ 
         [HttpPost]
         public IActionResult Post(Clinica NovaClinica)
         {
@@ -51,7 +52,6 @@ namespace Senai.SpMedicalGroup.WebApi.Controllers
         /// Lista todas as clinicas
         /// </summary>
         /// <returns>Uma lista de clinicas E Status Code 200 - Ok</returns>
-        [Authorize(Roles = "1")]
         [HttpGet]
         public IActionResult Get()
         {
@@ -73,7 +73,6 @@ namespace Senai.SpMedicalGroup.WebApi.Controllers
         /// </summary>
         /// <param name="Id">Id da clinica buscada</param>
         /// <returns>A clinica buscada E Status Code 200 - Ok</returns>
-        [Authorize(Roles = "1")]
         [HttpGet("{Id}")]
         public IActionResult GetById(int Id)
         {
@@ -96,7 +95,6 @@ namespace Senai.SpMedicalGroup.WebApi.Controllers
         /// <param name="Id">Id da clinica buscada</param>
         /// <param name="ClinicaAtualizada">Objeto tipo Clinica</param>
         /// <returns>Status Code 204 - No Content</returns>
-        [Authorize(Roles = "1")]
         [HttpPut("{Id}")]
         public IActionResult Update(int Id, Clinica ClinicaAtualizada)
         {
@@ -119,7 +117,6 @@ namespace Senai.SpMedicalGroup.WebApi.Controllers
         /// </summary>
         /// <param name="Id">Id da clinica buscada</param>
         /// <returns>Status Code 204 - No Content</returns>
-        [Authorize(Roles = "1")]
         [HttpDelete("{Id}")]
         public IActionResult Delete(int Id)
         {

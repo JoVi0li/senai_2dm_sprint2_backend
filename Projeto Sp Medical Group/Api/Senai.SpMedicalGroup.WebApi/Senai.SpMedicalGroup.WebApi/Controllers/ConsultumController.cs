@@ -14,6 +14,7 @@ namespace Senai.SpMedicalGroup.WebApi.Controllers
     [Produces("Application/json")]
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "1, 2, 3")]
     public class ConsultumController : ControllerBase
     {
         private IConsultumRepository _IConsultumRepository { get; set; }
@@ -29,7 +30,7 @@ namespace Senai.SpMedicalGroup.WebApi.Controllers
         /// </summary>
         /// <param name="NovoConsultum">Objeto do tipo Consultum</param>
         /// <returns>StatusCode 201 - Created</returns>
-        [Authorize(Roles = "1")]
+        
         [HttpPost]
         public IActionResult Post(Consultum NovoConsultum)
         {
@@ -50,8 +51,7 @@ namespace Senai.SpMedicalGroup.WebApi.Controllers
         /// <summary>
         /// Lista todas as consultas
         /// </summary>
-        /// <returns>Uma lista de consultas</returns>
-        [Authorize(Roles = "1")]
+        /// <returns>Uma lista de consultas</returns>      
         [HttpGet]
         public IActionResult Get()
         {
@@ -71,8 +71,7 @@ namespace Senai.SpMedicalGroup.WebApi.Controllers
         /// Busca um consulta pelo Id
         /// </summary>
         /// <param name="Id">Id da consulta buscada</param>
-        /// <returns>Uma consulta</returns>
-        [Authorize(Roles = "1")]
+        /// <returns>Uma consulta</returns>     
         [HttpGet("{Id}")]
         public IActionResult GetById(int Id)
         {
@@ -88,7 +87,11 @@ namespace Senai.SpMedicalGroup.WebApi.Controllers
         }
 
 
-        [Authorize(Roles = "1, 2")]
+        /// <summary>
+        /// Busca as consultas atribuidas ao medico
+        /// </summary>
+        /// <param name="Id">Id do medico</param>
+        /// <returns>Uma lista de consultas</returns>
         [HttpGet("GetByIdDoctor/{Id}")]
         public IActionResult GetByIdDoctor(int Id)
         {
@@ -103,7 +106,12 @@ namespace Senai.SpMedicalGroup.WebApi.Controllers
             }
         }
 
-        [Authorize(Roles = "1, 3")]
+        /// <summary>
+        /// Busca as consultas atribuidas ao paciente
+        /// </summary>
+        /// <param name="Id">Id do paciente</param>
+        /// <returns>Uma lista de consultas</returns>
+        ///     [Authorize(Roles = "1, 2, 3")]
         [HttpGet("GetByIdPatient/{Id}")]
         public IActionResult GetByIdPatient(int Id)
         {
@@ -125,7 +133,6 @@ namespace Senai.SpMedicalGroup.WebApi.Controllers
         /// <param name="Id">Id da consulta buscada</param>
         /// <param name="ConsultumAtualizado">Objeto do tipo Consultum</param>
         /// <returns>StatusCode 204 - No Content</returns>
-        [Authorize(Roles = "1")]
         [HttpPut("{Id}")]
         public IActionResult Put(int Id, Consultum ConsultumAtualizado)
         {
@@ -147,7 +154,6 @@ namespace Senai.SpMedicalGroup.WebApi.Controllers
         /// </summary>
         /// <param name="Id">Id da consulta buscada</param>
         /// <returns>StatusCode 204 - No Content</returns>
-        [Authorize(Roles = "1")]
         [HttpDelete("{Id}")]
         public IActionResult Delete(int Id)
         {

@@ -30,7 +30,24 @@ namespace Senai.SpMedicalGroup.WebApi.Repositories
 
         public List<Consultum> Read()
         {
-            return ctx.Consulta.ToList();
+            return ctx.Consulta
+                .Include(c => c.IdMedicoNavigation)
+                .Include(c => c.IdProntuarioNavigation)
+                .Select(c => new Consultum()
+                {
+                    IdConsulta = c.IdConsulta,
+                    Situacao = c.Situacao,
+                    DataConsulta = c.DataConsulta,
+                    IdMedicoNavigation = new Medico()
+                    {
+                        Nome = c.IdMedicoNavigation.Nome
+                    },
+                    IdProntuarioNavigation = new Prontuario()
+                    {
+                        Nome = c.IdProntuarioNavigation.Nome
+                    }
+                })
+                .ToList();
         }
 
         public Consultum ReadById(int Id)
@@ -51,14 +68,16 @@ namespace Senai.SpMedicalGroup.WebApi.Repositories
                     IdMedicoNavigation = new Medico()
                     {
                         Nome = c.IdMedicoNavigation.Nome,
-                        Crm = c.IdMedicoNavigation.Crm,
                         IdMedico = (int)c.IdMedico,
-                        IdEspecialidade = c.IdMedicoNavigation.IdEspecialidade,
-                        IdUsuario = c.IdMedicoNavigation.IdUsuario,
-                        IdClinica = c.IdMedicoNavigation.IdClinica
+                        IdUsuario = c.IdMedicoNavigation.IdUsuario
+                    },
+                    IdProntuarioNavigation = new Prontuario()
+                    {
+                        Nome = c.IdProntuarioNavigation.Nome
                     }
+                    
                 })
-                .Where(c => c.IdMedico == Id)
+                .Where(c => c.IdMedicoNavigation.IdUsuario == Id)
                 .ToList();
         }
 
@@ -78,11 +97,10 @@ namespace Senai.SpMedicalGroup.WebApi.Repositories
                         IdProntuario = (int)c.IdProntuario,
                         IdUsuario = c.IdProntuarioNavigation.IdUsuario,
                         Nome = c.IdProntuarioNavigation.Nome,
-                        Telefone = c.IdProntuarioNavigation.Telefone,
-                        Rg = c.IdProntuarioNavigation.Rg,
-                        Cpf = c.IdProntuarioNavigation.Cpf,
-                        Endereco = c.IdProntuarioNavigation.Endereco,
-                        DataNascimento = c.IdProntuarioNavigation.DataNascimento
+                    },
+                    IdMedicoNavigation = new Medico()
+                    {
+                        Nome = c.IdMedicoNavigation.Nome
                     }
                 })
                 .Where(c => c.IdProntuarioNavigation.IdUsuario == Id)

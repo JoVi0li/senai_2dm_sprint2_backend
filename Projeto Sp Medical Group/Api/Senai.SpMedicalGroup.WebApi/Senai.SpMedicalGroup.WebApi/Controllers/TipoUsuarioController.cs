@@ -14,6 +14,7 @@ namespace Senai.SpMedicalGroup.WebApi.Controllers
     [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "1")]
     public class TipoUsuarioController : ControllerBase
     {
 
@@ -31,7 +32,6 @@ namespace Senai.SpMedicalGroup.WebApi.Controllers
         /// </summary>
         /// <param name="NovoTipoUsuario">Objeto do tipo TipoUsuario</param>
         /// <returns>StatusCode 201 - Created</returns>
-        [Authorize(Roles = "1")]
         [HttpPost]
         public IActionResult Post(TipoUsuario NovoTipoUsuario)
         {
@@ -53,7 +53,6 @@ namespace Senai.SpMedicalGroup.WebApi.Controllers
         /// Lista todos os tipos de usuarios
         /// </summary>
         /// <returns>Uma lista de tipos de usuarios E StatusCode 200 - Ok</returns>
-        [Authorize(Roles = "1")]
         [HttpGet]
         public IActionResult Get()
         {
@@ -74,7 +73,6 @@ namespace Senai.SpMedicalGroup.WebApi.Controllers
         /// </summary>
         /// <param name="Id">Id do tipo de usuario buscado</param>
         /// <returns>Um tipo de usuario E StatusCode 200 - Ok</returns>
-        [Authorize(Roles = "1")]
         [HttpGet("{Id}")]
         public IActionResult GetById(int Id)
         {
@@ -96,7 +94,6 @@ namespace Senai.SpMedicalGroup.WebApi.Controllers
         /// <param name="Id">id do tipo de usuario buscado</param>
         /// <param name="TpoUsuarioAtualizado">Objeto do tipo TipoUsuario</param>
         /// <returns>StatusCode 204 - No Content</returns>
-        [Authorize(Roles = "1")]
         [HttpPut("{Id}")]
         public IActionResult Put(int Id, TipoUsuario TpoUsuarioAtualizado)
         {
@@ -119,7 +116,6 @@ namespace Senai.SpMedicalGroup.WebApi.Controllers
         /// </summary>
         /// <param name="Id">Id do tipo de usuario buscado</param>
         /// <returns>StatusCode 204 - No Content</returns>
-        [Authorize(Roles = "1")]
         [HttpDelete("{Id}")]
         public IActionResult Delete(int Id)
         {

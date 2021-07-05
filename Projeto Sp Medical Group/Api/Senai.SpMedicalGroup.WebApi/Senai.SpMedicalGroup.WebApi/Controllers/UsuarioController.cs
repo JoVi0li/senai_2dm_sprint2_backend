@@ -14,6 +14,7 @@ namespace Senai.SpMedicalGroup.WebApi.Controllers
     [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "1")]
     public class UsuarioController : ControllerBase
     {
         private IUsuarioRepository _IUsuarioRepository { get; set; }
@@ -29,8 +30,7 @@ namespace Senai.SpMedicalGroup.WebApi.Controllers
         /// Cadastra um novo usuario
         /// </summary>
         /// <param name="NovoUsuario">Objeto do tipo Usuario</param>
-        /// <returns>StatusCode 201 - Created</returns>
-        [Authorize(Roles = "1")]
+        /// <returns>StatusCode 201 - Created</returns>       
         [HttpPost]
         public IActionResult Post(Usuario NovoUsuario)
         {
@@ -51,8 +51,7 @@ namespace Senai.SpMedicalGroup.WebApi.Controllers
         /// <summary>
         /// Lista todos os usuarios
         /// </summary>
-        /// <returns>Uma lista de usuarios E StatusCode 200 - Ok</returns>
-        [Authorize(Roles = "1")]
+        /// <returns>Uma lista de usuarios E StatusCode 200 - Ok</returns>        
         [HttpGet]
         public IActionResult Get()
         {
@@ -72,8 +71,7 @@ namespace Senai.SpMedicalGroup.WebApi.Controllers
         /// Busca um usuario pelo Id
         /// </summary>
         /// <param name="Id">Id do usuario buscado</param>
-        /// <returns>Um usuario E StatusCode 200 - Ok</returns>
-        [Authorize(Roles = "1")]
+        /// <returns>Um usuario E StatusCode 200 - Ok</returns>     
         [HttpGet("{Id}")]
         public IActionResult GetById(int Id)
         {
@@ -95,7 +93,6 @@ namespace Senai.SpMedicalGroup.WebApi.Controllers
         /// <param name="Id">Id do usuario buscado</param>
         /// <param name="UsuarioAtualizado">Objeto do tipo Usuario</param>
         /// <returns>StatusCode 204 - No Content</returns>
-        [Authorize(Roles = "1")]
         [HttpPut("{Id}")]
         public IActionResult Put(int Id, Usuario UsuarioAtualizado)
         {
@@ -118,7 +115,6 @@ namespace Senai.SpMedicalGroup.WebApi.Controllers
         /// </summary>
         /// <param name="Id">Id do usuario buscado</param>
         /// <returns>StatusCode 204 - No Content</returns>
-        [Authorize(Roles = "1")]
         [HttpDelete("{Id}")]
         public IActionResult Delete(int Id)
         {

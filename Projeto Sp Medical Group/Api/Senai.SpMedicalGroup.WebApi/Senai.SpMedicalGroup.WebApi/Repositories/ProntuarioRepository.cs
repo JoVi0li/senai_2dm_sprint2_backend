@@ -1,4 +1,5 @@
-﻿using Senai.SpMedicalGroup.WebApi.Contexts;
+﻿using Microsoft.EntityFrameworkCore;
+using Senai.SpMedicalGroup.WebApi.Contexts;
 using Senai.SpMedicalGroup.WebApi.Domains;
 using Senai.SpMedicalGroup.WebApi.Interfaces;
 using System;
@@ -29,7 +30,10 @@ namespace Senai.SpMedicalGroup.WebApi.Repositories
 
         public List<Prontuario> Read()
         {
-            return ctx.Prontuarios.ToList();
+            return ctx.Prontuarios
+                .Include(p => p.Consulta)
+                .Include(p => p.IdUsuarioNavigation)
+                .ToList();
         }
 
         public Prontuario ReadById(int Id)
